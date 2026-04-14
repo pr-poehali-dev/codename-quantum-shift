@@ -1,10 +1,38 @@
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+
+const projects = [
+  {
+    icon: "🏢",
+    tag: "Бизнес-центр",
+    name: "БЦ «Северная башня»",
+    desc: "Комплексная система безопасности: 120 камер видеонаблюдения, СКУД на 14 этажах, охранная сигнализация.",
+    stats: [{ value: "120", label: "камер" }, { value: "14", label: "этажей" }, { value: "3 мес.", label: "срок" }],
+  },
+  {
+    icon: "🏭",
+    tag: "Производство",
+    name: "Завод «ТехноМаш»",
+    desc: "Модернизация ИТ-инфраструктуры: структурированные кабельные сети, серверная комната, Wi-Fi покрытие цехов.",
+    stats: [{ value: "5000", label: "м² СКС" }, { value: "48", label: "точек Wi-Fi" }, { value: "4 мес.", label: "срок" }],
+  },
+  {
+    icon: "🏬",
+    tag: "Торговый центр",
+    name: "ТЦ «Меридиан»",
+    desc: "Видеоаналитика и СКУД под ключ. Интеграция с системой управления зданием (BMS).",
+    stats: [{ value: "200+", label: "камер" }, { value: "32", label: "точки СКУД" }, { value: "2 мес.", label: "срок" }],
+  },
+]
 
 const PhotographyBanner: React.FC = () => {
   const [currentText, setCurrentText] = useState("")
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [formState, setFormState] = useState({ name: "", phone: "", object: "", system: "", comment: "" })
+  const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const texts = ["БЕЗОПАСНОСТЬ.", "ТЕХНОЛОГИИ.", "НАДЁЖНОСТЬ."]
 
@@ -31,6 +59,14 @@ const PhotographyBanner: React.FC = () => {
 
     return () => clearTimeout(timer)
   }, [currentText, currentIndex, isDeleting, texts])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitting(true)
+    await new Promise(r => setTimeout(r, 900))
+    setSubmitting(false)
+    setSubmitted(true)
+  }
 
   return (
     <>
@@ -691,6 +727,386 @@ const PhotographyBanner: React.FC = () => {
           margin: 5px 0 0;
         }
 
+        .projects-section {
+          padding: 100px 30px;
+          background-color: #002b36;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .projects-section::before {
+          content: "";
+          border-radius: 197.5px 0px;
+          opacity: 0.25;
+          background: #d33682;
+          filter: blur(140px);
+          height: 50%;
+          width: 40%;
+          position: absolute;
+          bottom: 0;
+          right: -10%;
+          z-index: 0;
+        }
+
+        .projects-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        .section-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-bottom: 60px;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .section-title {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: clamp(48px, 7vw, 100px);
+          line-height: 0.9;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        .section-title .highlight {
+          color: #d33682;
+        }
+
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+
+        .project-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid #1e3a42;
+          border-radius: 20px;
+          overflow: hidden;
+          transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+          transform: translateY(-6px);
+          border-color: #d33682;
+        }
+
+        .project-img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          display: block;
+          background: #0d3344;
+        }
+
+        .project-img-placeholder {
+          width: 100%;
+          height: 200px;
+          background: linear-gradient(135deg, #0d3344 0%, #1a4a5e 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 48px;
+        }
+
+        .project-body {
+          padding: 28px 28px 32px;
+        }
+
+        .project-tag {
+          display: inline-block;
+          background: rgba(211,54,130,0.15);
+          color: #d33682;
+          font-family: "Montserrat";
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          padding: 5px 12px;
+          border-radius: 50px;
+          margin-bottom: 14px;
+        }
+
+        .project-name {
+          color: #fff;
+          font-family: "Montserrat";
+          font-weight: 700;
+          font-size: 20px;
+          margin: 0 0 10px;
+        }
+
+        .project-desc {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.7;
+          margin: 0 0 20px;
+        }
+
+        .project-stats {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+
+        .stat {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .stat-value {
+          color: #d33682;
+          font-family: "Montserrat";
+          font-weight: 700;
+          font-size: 18px;
+        }
+
+        .stat-label {
+          color: #666;
+          font-family: "Inter";
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        /* Form section */
+        .form-section {
+          padding: 100px 30px;
+          background-color: #073642;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .form-section::before {
+          content: "";
+          border-radius: 197.5px 0px;
+          opacity: 0.35;
+          background: #d33682;
+          filter: blur(160px);
+          height: 70%;
+          width: 50%;
+          position: absolute;
+          top: 50%;
+          left: -20%;
+          transform: translateY(-50%);
+          z-index: 0;
+        }
+
+        .form-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .form-info h2 {
+          color: #fff;
+          font-family: "Montserrat";
+          font-weight: 700;
+          font-size: clamp(40px, 5vw, 72px);
+          line-height: 1;
+          margin: 0 0 20px;
+          text-transform: uppercase;
+        }
+
+        .form-info h2 .highlight {
+          color: #d33682;
+        }
+
+        .form-info p {
+          color: #aaa;
+          font-family: "Inter";
+          font-size: 16px;
+          line-height: 1.8;
+          margin: 0 0 40px;
+        }
+
+        .form-contacts {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .form-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          color: #fff;
+          font-family: "Inter";
+          font-size: 15px;
+          text-decoration: none;
+        }
+
+        .form-contact-item:hover {
+          color: #d33682;
+        }
+
+        .form-contact-icon {
+          width: 42px;
+          height: 42px;
+          background: rgba(211,54,130,0.12);
+          border: 1px solid #333;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          font-size: 16px;
+        }
+
+        .request-form {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid #1e3a42;
+          border-radius: 24px;
+          padding: 48px 40px;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+
+        .form-field {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 18px;
+        }
+
+        .form-field label {
+          color: #aaa;
+          font-family: "Montserrat";
+          font-size: 12px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid #2a4a54;
+          border-radius: 10px;
+          padding: 14px 18px;
+          color: #fff;
+          font-family: "Inter";
+          font-size: 15px;
+          outline: none;
+          transition: border-color 0.3s;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+          border-color: #d33682;
+        }
+
+        .form-field select option {
+          background: #073642;
+          color: #fff;
+        }
+
+        .form-field textarea {
+          resize: none;
+          min-height: 100px;
+        }
+
+        .form-submit {
+          width: 100%;
+          padding: 16px;
+          background: #d33682;
+          color: #002b36;
+          border: none;
+          border-radius: 50px;
+          font-family: "Montserrat";
+          font-size: 16px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-top: 6px;
+        }
+
+        .form-submit:hover {
+          background: #fff;
+          color: #002b36;
+        }
+
+        .form-submit:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
+        .form-success {
+          text-align: center;
+          padding: 40px 20px;
+        }
+
+        .form-success .success-icon {
+          font-size: 64px;
+          margin-bottom: 16px;
+        }
+
+        .form-success h3 {
+          color: #fff;
+          font-family: "Montserrat";
+          font-size: 24px;
+          margin: 0 0 10px;
+        }
+
+        .form-success p {
+          color: #aaa;
+          font-family: "Inter";
+          font-size: 15px;
+          margin: 0;
+        }
+
+        @media screen and (max-width: 1199px) {
+          .projects-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media screen and (max-width: 767px) {
+          .projects-section,
+          .form-section {
+            padding: 60px 16px;
+          }
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+          .form-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .form-row {
+            grid-template-columns: 1fr;
+          }
+          .request-form {
+            padding: 28px 20px;
+          }
+          .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+        }
+
         .cta-section {
           padding: 120px 30px;
           background-color: #073642;
@@ -839,7 +1255,7 @@ const PhotographyBanner: React.FC = () => {
               <p className="tracking-widest">
                 Проектируем и строим комплексные ИТ-инфраструктуры и системы безопасности для объектов любого масштаба — от проекта до сдачи под ключ
               </p>
-              <a href="#cta" className="book-link">
+              <a href="#form" className="book-link">
                 <span className="linktext tracking-tighter text-3xl">Обсудить проект</span>
                 <span className="arrow">
                   <span></span>
@@ -1011,6 +1427,130 @@ const PhotographyBanner: React.FC = () => {
             </div>
           </section>
 
+          {/* Реализованные объекты */}
+          <section className="projects-section">
+            <div className="projects-container">
+              <div className="section-header">
+                <h2 className="section-title">Наши <span className="highlight">объекты</span></h2>
+              </div>
+              <div className="projects-grid">
+                {projects.map((p) => (
+                  <div key={p.name} className="project-card">
+                    <div className="project-img-placeholder">{p.icon}</div>
+                    <div className="project-body">
+                      <span className="project-tag">{p.tag}</span>
+                      <h3 className="project-name">{p.name}</h3>
+                      <p className="project-desc">{p.desc}</p>
+                      <div className="project-stats">
+                        {p.stats.map(s => (
+                          <div key={s.label} className="stat">
+                            <span className="stat-value">{s.value}</span>
+                            <span className="stat-label">{s.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Форма заявки */}
+          <section className="form-section" id="form">
+            <div className="form-container">
+              <div className="form-info">
+                <h2>Получите <span className="highlight">расчёт</span> бесплатно</h2>
+                <p>Опишите ваш объект — мы подготовим техническое решение и смету в течение одного рабочего дня.</p>
+                <div className="form-contacts">
+                  <a href="tel:+74950000000" className="form-contact-item">
+                    <div className="form-contact-icon">📞</div>
+                    +7 (495) 000-00-00
+                  </a>
+                  <a href="mailto:info@company.ru" className="form-contact-item">
+                    <div className="form-contact-icon">✉️</div>
+                    info@company.ru
+                  </a>
+                  <span className="form-contact-item">
+                    <div className="form-contact-icon">📍</div>
+                    Москва, Россия
+                  </span>
+                </div>
+              </div>
+
+              <div className="request-form">
+                {submitted ? (
+                  <div className="form-success">
+                    <div className="success-icon">✅</div>
+                    <h3>Заявка отправлена!</h3>
+                    <p>Мы свяжемся с вами в течение одного рабочего дня.</p>
+                  </div>
+                ) : (
+                  <form ref={formRef} onSubmit={handleSubmit}>
+                    <div className="form-row">
+                      <div className="form-field">
+                        <label>Ваше имя</label>
+                        <input
+                          type="text"
+                          placeholder="Иван Иванов"
+                          value={formState.name}
+                          onChange={e => setFormState(s => ({ ...s, name: e.target.value }))}
+                          required
+                        />
+                      </div>
+                      <div className="form-field">
+                        <label>Телефон</label>
+                        <input
+                          type="tel"
+                          placeholder="+7 (___) ___-__-__"
+                          value={formState.phone}
+                          onChange={e => setFormState(s => ({ ...s, phone: e.target.value }))}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="form-field">
+                      <label>Объект</label>
+                      <input
+                        type="text"
+                        placeholder="Офисный центр, склад, производство..."
+                        value={formState.object}
+                        onChange={e => setFormState(s => ({ ...s, object: e.target.value }))}
+                        required
+                      />
+                    </div>
+                    <div className="form-field">
+                      <label>Тип системы</label>
+                      <select
+                        value={formState.system}
+                        onChange={e => setFormState(s => ({ ...s, system: e.target.value }))}
+                        required
+                      >
+                        <option value="">Выберите систему</option>
+                        <option value="cctv">Видеонаблюдение</option>
+                        <option value="access">СКУД</option>
+                        <option value="alarm">Охранная сигнализация</option>
+                        <option value="scs">Структурированные кабельные сети</option>
+                        <option value="complex">Комплексное решение</option>
+                      </select>
+                    </div>
+                    <div className="form-field">
+                      <label>Комментарий</label>
+                      <textarea
+                        placeholder="Опишите задачу, площадь объекта, сроки..."
+                        value={formState.comment}
+                        onChange={e => setFormState(s => ({ ...s, comment: e.target.value }))}
+                      />
+                    </div>
+                    <button type="submit" className="form-submit" disabled={submitting}>
+                      {submitting ? "Отправляем..." : "Получить расчёт"}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </section>
+
           <section className="cta-section" id="cta">
             <div className="cta-container">
               <h2 className="cta-title text-center">Оставьте заявку</h2>
@@ -1018,10 +1558,10 @@ const PhotographyBanner: React.FC = () => {
                 Расскажите о вашем объекте — мы подготовим техническое решение и смету. Работаем по всей России.
               </p>
               <div className="cta-buttons">
-                <a href="#" className="cta-button">
+                <a href="#form" className="cta-button">
                   Получить расчёт
                 </a>
-                <a href="#" className="cta-button secondary">
+                <a href="#form" className="cta-button secondary">
                   Наши объекты
                 </a>
               </div>
