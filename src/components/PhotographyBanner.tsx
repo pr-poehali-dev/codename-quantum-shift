@@ -1463,17 +1463,17 @@ const PhotographyBanner: React.FC = () => {
                 <h2>Получите <span className="highlight">расчёт</span> бесплатно</h2>
                 <p>Опишите ваш объект — мы подготовим техническое решение и смету в течение одного рабочего дня.</p>
                 <div className="form-contacts">
-                  <a href="tel:+74950000000" className="form-contact-item">
+                  <a href="tel:+73912202222" className="form-contact-item">
                     <div className="form-contact-icon">📞</div>
-                    +7 (495) 000-00-00
+                    +7-391-220-22-22
                   </a>
-                  <a href="mailto:info@company.ru" className="form-contact-item">
+                  <a href="mailto:info@sp-krk.ru" className="form-contact-item">
                     <div className="form-contact-icon">✉️</div>
-                    info@company.ru
+                    info@sp-krk.ru
                   </a>
                   <span className="form-contact-item">
                     <div className="form-contact-icon">📍</div>
-                    Москва, Россия
+                    Красноярск, Россия
                   </span>
                 </div>
               </div>

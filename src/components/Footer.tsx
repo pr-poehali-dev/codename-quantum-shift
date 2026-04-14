@@ -23,9 +23,9 @@ const data = {
     blog: "/blog",
   },
   contact: {
-    email: "info@company.ru",
-    phone: "+7 (495) 000-00-00",
-    address: "Москва, Россия",
+    email: "info@sp-krk.ru",
+    phone: "+7-391-220-22-22",
+    address: "Красноярск, Россия",
   },
   company: {
     name: "СвязьПроект",
