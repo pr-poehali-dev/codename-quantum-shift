@@ -6,7 +6,7 @@ const PhotographyBanner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  const texts = ["БИЗНЕС.", "БРЕНДЫ."]
+  const texts = ["БЕЗОПАСНОСТЬ.", "ТЕХНОЛОГИИ.", "НАДЁЖНОСТЬ."]
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 40 : 100
@@ -828,7 +828,7 @@ const PhotographyBanner: React.FC = () => {
             <div className="left-part">
               <h1>
                 <span className="d-flex">
-                  {["С", "О", "З", "Д", "А", "Ё", "М"].map((char, index) => (
+                  {["С", "Т", "Р", "О", "И", "М"].map((char, index) => (
                     <span key={index} className="char tracking-tighter" style={{ animationDelay: `${index * 0.08}s` }}>
                       {char === " " ? "\u00A0" : char}
                     </span>
@@ -837,10 +837,10 @@ const PhotographyBanner: React.FC = () => {
                 <span className="text tracking-tighter">{currentText}</span>
               </h1>
               <p className="tracking-widest">
-                Помогаем предпринимателям запускать цифровые продукты быстрее с помощью современных технологий
+                Проектируем и строим комплексные ИТ-инфраструктуры и системы безопасности для объектов любого масштаба — от проекта до сдачи под ключ
               </p>
               <a href="#cta" className="book-link">
-                <span className="linktext tracking-tighter text-3xl">Начать проект</span>
+                <span className="linktext tracking-tighter text-3xl">Обсудить проект</span>
                 <span className="arrow">
                   <span></span>
                 </span>
@@ -888,42 +888,42 @@ const PhotographyBanner: React.FC = () => {
           <section className="features-section">
             <div className="features-container">
               <div className="features-content">
-                <h2>Почему выбирают нас?</h2>
+                <h2>Почему выбирают <span className="highlight">нас?</span></h2>
               </div>
               <ul className="features-list">
                 <li className="feature-item">
                   <div className="feature-icon">01</div>
                   <div className="feature-text">
-                    <h3>Опытная команда</h3>
+                    <h3>Полный цикл работ</h3>
                     <p className="font-light tracking-wider">
-                      Более 10 лет опыта в разработке цифровых продуктов для бизнеса любого масштаба
+                      От технического проекта до монтажа и пусконаладки — берём на себя весь процесс интеграции
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">02</div>
                   <div className="feature-text">
-                    <h3>Современные технологии</h3>
+                    <h3>Сертифицированные специалисты</h3>
                     <p className="tracking-wider">
-                      Используем передовые инструменты и фреймворки для создания быстрых и надёжных решений
+                      Команда с допусками СРО и сертификатами ведущих производителей оборудования
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">03</div>
                   <div className="feature-text">
-                    <h3>Индивидуальный подход</h3>
+                    <h3>Комплексная безопасность</h3>
                     <p className="tracking-wider">
-                      Каждый проект уникален — мы адаптируем решения под ваши конкретные задачи и цели
+                      Видеонаблюдение, СКУД, охранная сигнализация, структурированные кабельные сети — всё в одних руках
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">04</div>
                   <div className="feature-text">
-                    <h3>Поддержка 24/7</h3>
+                    <h3>Гарантия и обслуживание</h3>
                     <p className="tracking-wider">
-                      Обеспечиваем техническую поддержку и сопровождение на всех этапах работы
+                      Техническая поддержка и сервисное обслуживание смонтированных систем 24/7
                     </p>
                   </div>
                 </li>
@@ -937,73 +937,73 @@ const PhotographyBanner: React.FC = () => {
               <div className="testimonials-marquee">
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Команда полностью изменила наш подход к цифровому присутствию. Результаты превзошли все ожидания."
+                    "Оснастили наш бизнес-центр системой видеонаблюдения и СКУД под ключ. Работают без нареканий уже два года."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">АС</div>
                     <div className="author-info">
                       <h4>Алексей Смирнов</h4>
-                      <p>Директор по развитию</p>
+                      <p>Управляющий БЦ «Горизонт»</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Профессиональный подход и внимание к деталям. Запустили проект в рекордные сроки без потери качества."
+                    "Провели полную модернизацию ИТ-инфраструктуры на производстве. Профессионально, в срок и с гарантией."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">МК</div>
                     <div className="author-info">
-                      <h4>Мария Козлова</h4>
-                      <p>Основатель стартапа</p>
+                      <h4>Михаил Краснов</h4>
+                      <p>Технический директор завода</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "От идеи до запуска — всё прошло гладко. Рекомендую всем, кто ценит качество и скорость."
+                    "Спроектировали и смонтировали охранную систему для склада. Чётко выполнили все требования технического задания."
                   </p>
                   <div className="testimonial-author">
-                    <div className="author-avatar">ДВ</div>
+                    <div className="author-avatar">ОП</div>
                     <div className="author-info">
-                      <h4>Дмитрий Волков</h4>
-                      <p>Предприниматель</p>
+                      <h4>Ольга Петрова</h4>
+                      <p>Начальник службы безопасности</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Команда полностью изменила наш подход к цифровому присутствию. Результаты превзошли все ожидания."
+                    "Оснастили наш бизнес-центр системой видеонаблюдения и СКУД под ключ. Работают без нареканий уже два года."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">АС</div>
                     <div className="author-info">
                       <h4>Алексей Смирнов</h4>
-                      <p>Директор по развитию</p>
+                      <p>Управляющий БЦ «Горизонт»</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Профессиональный подход и внимание к деталям. Запустили проект в рекордные сроки без потери качества."
+                    "Провели полную модернизацию ИТ-инфраструктуры на производстве. Профессионально, в срок и с гарантией."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">МК</div>
                     <div className="author-info">
-                      <h4>Мария Козлова</h4>
-                      <p>Основатель стартапа</p>
+                      <h4>Михаил Краснов</h4>
+                      <p>Технический директор завода</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "От идеи до запуска — всё прошло гладко. Рекомендую всем, кто ценит качество и скорость."
+                    "Спроектировали и смонтировали охранную систему для склада. Чётко выполнили все требования технического задания."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">ДВ</div>
                     <div className="author-info">
-                      <h4>Дмитрий Волков</h4>
-                      <p>Предприниматель</p>
+                      <h4>Ольга Петрова</h4>
+                      <p>Начальник службы безопасности</p>
                     </div>
                   </div>
                 </div>
@@ -1013,16 +1013,16 @@ const PhotographyBanner: React.FC = () => {
 
           <section className="cta-section" id="cta">
             <div className="cta-container">
-              <h2 className="cta-title text-center">Готовы начать?</h2>
+              <h2 className="cta-title text-center">Оставьте заявку</h2>
               <p className="cta-subtitle">
-                Присоединяйтесь к сотням компаний, которые уже трансформировали свой бизнес. Ваш путь к успеху начинается здесь.
+                Расскажите о вашем объекте — мы подготовим техническое решение и смету. Работаем по всей России.
               </p>
               <div className="cta-buttons">
                 <a href="#" className="cta-button">
-                  Обсудить проект
+                  Получить расчёт
                 </a>
                 <a href="#" className="cta-button secondary">
-                  Посмотреть кейсы
+                  Наши объекты
                 </a>
               </div>
             </div>

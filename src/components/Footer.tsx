@@ -1,36 +1,36 @@
 import { Facebook, Instagram, Twitter, Github, Mail, MapPin, Phone } from "lucide-react"
 
 const data = {
-  facebookLink: "https://facebook.com/digitalhub",
-  instaLink: "https://instagram.com/digitalhub",
-  twitterLink: "https://twitter.com/digitalhub",
-  githubLink: "https://github.com/digitalhub",
+  facebookLink: "https://facebook.com",
+  instaLink: "https://instagram.com",
+  twitterLink: "https://vk.com",
+  githubLink: "https://t.me",
   services: {
-    web: "/web-razrabotka",
-    mobile: "/mobilnye-prilozheniya",
-    design: "/ui-ux-dizajn",
-    marketing: "/digital-marketing",
+    web: "/strukturirovannye-kabelnye-seti",
+    mobile: "/sistemy-videonablyudeniya",
+    design: "/skud",
+    marketing: "/ohrannaya-signalizaciya",
   },
   about: {
     story: "/o-nas",
-    team: "/komanda",
-    portfolio: "/portfolio",
+    team: "/licenzii",
+    portfolio: "/obekty",
     careers: "/vakansii",
   },
   help: {
     faqs: "/faq",
-    support: "/podderzhka",
+    support: "/servisnoe-obsluzhivanie",
     blog: "/blog",
   },
   contact: {
-    email: "hello@digitalhub.ru",
-    phone: "+7 (495) 123-45-67",
+    email: "info@company.ru",
+    phone: "+7 (495) 000-00-00",
     address: "Москва, Россия",
   },
   company: {
-    name: "ДиджиталХаб",
+    name: "ИТ-Безопасность",
     description:
-      "Создаём цифровые продукты, которые помогают бизнесу расти. Веб-разработка, мобильные приложения и дизайн под ключ.",
+      "Проектируем и строим комплексные системы ИТ-инфраструктуры и безопасности для объектов любого масштаба. Работаем под ключ.",
   },
 }
 
@@ -42,22 +42,22 @@ const socialLinks = [
 ]
 
 const aboutLinks = [
-  { text: "О нас", href: data.about.story },
-  { text: "Команда", href: data.about.team },
-  { text: "Портфолио", href: data.about.portfolio },
+  { text: "О компании", href: data.about.story },
+  { text: "Лицензии и допуски", href: data.about.team },
+  { text: "Реализованные объекты", href: data.about.portfolio },
   { text: "Вакансии", href: data.about.careers },
 ]
 
 const serviceLinks = [
-  { text: "Веб-разработка", href: data.services.web },
-  { text: "Мобильные приложения", href: data.services.mobile },
-  { text: "UI/UX Дизайн", href: data.services.design },
-  { text: "Digital-маркетинг", href: data.services.marketing },
+  { text: "Структурированные кабельные сети", href: data.services.web },
+  { text: "Системы видеонаблюдения", href: data.services.mobile },
+  { text: "СКУД", href: data.services.design },
+  { text: "Охранная сигнализация", href: data.services.marketing },
 ]
 
 const helpfulLinks = [
-  { text: "FAQ", href: data.help.faqs },
-  { text: "Поддержка", href: data.help.support },
+  { text: "Частые вопросы", href: data.help.faqs },
+  { text: "Сервисное обслуживание", href: data.help.support },
   { text: "Блог", href: data.help.blog, hasIndicator: true },
 ]
 
@@ -396,7 +396,7 @@ export default function Footer() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo">
-                <div className="brand-icon">DH</div>
+                <div className="brand-icon">ИБ</div>
                 <span className="brand-name">{data.company.name}</span>
               </div>
               <p className="brand-description">{data.company.description}</p>
@@ -470,7 +470,7 @@ export default function Footer() {
 
           <div className="footer-bottom">
             <p className="copyright">
-              2025 <a href="https://poehali.dev">poehali.dev</a>
+              © 2025 {data.company.name}. Все права защищены.
             </p>
             <div className="footer-legal">
               <a href="/privacy">Политика конфиденциальности</a>
