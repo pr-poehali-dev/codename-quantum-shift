@@ -28,7 +28,7 @@ const data = {
     address: "Москва, Россия",
   },
   company: {
-    name: "ИТ-Безопасность",
+    name: "СвязьПроект",
     description:
       "Проектируем и строим комплексные системы ИТ-инфраструктуры и безопасности для объектов любого масштаба. Работаем под ключ.",
   },
@@ -396,7 +396,7 @@ export default function Footer() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo">
-                <div className="brand-icon">ИБ</div>
+                <div className="brand-icon">СП</div>
                 <span className="brand-name">{data.company.name}</span>
               </div>
               <p className="brand-description">{data.company.description}</p>
@@ -470,7 +470,7 @@ export default function Footer() {
 
           <div className="footer-bottom">
             <p className="copyright">
-              © 2025 {data.company.name}. Все права защищены.
+              © 2025 ООО «СвязьПроект». Все права защищены.
             </p>
             <div className="footer-legal">
               <a href="/privacy">Политика конфиденциальности</a>
